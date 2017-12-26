@@ -1,0 +1,69 @@
+<div class="jumbotron">
+  <div class="row justify-content-center">
+    <h1>Cadastro</h1>
+  </div>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+        <div class="form-group" [ngClass]="verificaCSS('email') ? 'has-success' : 'has-danger'">
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="fas fa-at fa-2x" aria-hidden="true"></i>
+            </span>
+            <input type="email" class="form-control" [ngClass]="verificaCSS('email') ? 'form-control-success' : 'form-control-danger'"
+              placeholder="Informar email válido" formControlName="email">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+        <div class="form-group" [ngClass]="verificaCSS('password1') ? 'has-success' : 'has-danger'">
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="fas fa-key fa-2x" aria-hidden="true"></i>
+            </span>
+            <input type="password" class="form-control" [ngClass]="verificaCSS('password1') ? 'form-control-success' : 'form-control-danger'"
+              placeholder="Informar senha" formControlName="password1">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+        <div class="form-group" [ngClass]="verificaCSS('password2') ? 'has-success' : 'has-danger'">
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="fas fa-key fa-2x" aria-hidden="true"></i>
+            </span>
+            <input type="password" class="form-control" [ngClass]="verificaCSS('password2') ? 'form-control-success' : 'form-control-danger'"
+              placeholder="Repetir senha" formControlName="password2">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row justify-content-center" data-toggle="tooltip" title="Cadastrar">
+        <div class="col-md-6">
+          <button [disabled]="loading" type="submit" class="btn btn-success btn-block">
+            <i class="far fa-save fa-2x" aria-hidden="true"></i>
+            Cadastrar
+          </button>
+          <preloader *ngIf="loading"></preloader>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-md-3">
+          <a [routerLink]="['/login']" class="btn btn-link">Voltar para tela de LOGIN</a>
+        </div>
+      </div>
+    </div>
+    <!-- form-group -->
+
+  </form>
+</div>
