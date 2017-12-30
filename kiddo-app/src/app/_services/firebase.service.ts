@@ -4,12 +4,7 @@ declare var firebase: any;
 
 @Injectable()
 export class FirebaseService {
-
-  /*
-<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
+  private config = {
     apiKey: "AIzaSyDr9FVOODDSDqxUREgKeTvZZuu75iuAiEQ",
     authDomain: "kiddo-app.firebaseapp.com",
     databaseURL: "https://kiddo-app.firebaseio.com",
@@ -17,21 +12,9 @@ export class FirebaseService {
     storageBucket: "kiddo-app.appspot.com",
     messagingSenderId: "297076652416"
   };
-  firebase.initializeApp(config);
-</script>
-   */
-
-  private setting = {
-    apiKey: 'AIzaSyDr9FVOODDSDqxUREgKeTvZZuu75iuAiEQ',
-    authDomain: 'kiddo-app.firebaseapp.com',
-    databaseURL: 'https://biblioteca-pro-vida.firebaseio.com',
-    projectId: 'kiddo-app',
-    storageBucket: 'kiddo-app.appspot.com',
-    messagingSenderId: '297076652416'
-  };
   private provider: any = {};
   constructor() {
-    firebase.initializeApp(this.setting);
+    firebase.initializeApp(this.config);
   }
   // database
   getDatabaseRef(reference: string) {
@@ -47,7 +30,7 @@ export class FirebaseService {
       .child(reference);
   }
 
-  // storage
+  // storage -- para fotos ou documentos PDF
   getStorageRef(reference: string) {
     return firebase.storage().ref(reference);
   }

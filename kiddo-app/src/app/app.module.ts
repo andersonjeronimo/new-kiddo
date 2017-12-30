@@ -15,6 +15,10 @@ import { AlertComponent } from './_directives/alert/alert.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { FirebaseService } from './_services/firebase.service';
 import { AlertService } from './_services/alert.service';
+import { CustomerComponent } from './customer/customer.component';
+import { CustomerFormComponent } from './customer-form/customer-form.component';
+import { ProductComponent } from './product/product.component';
+import { ProductFormComponent } from './product-form/product-form.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,11 @@ import { AlertService } from './_services/alert.service';
     LoginComponent,
     RegisterComponent,
     PreloaderComponent,
-    AlertComponent
+    AlertComponent,
+    CustomerComponent,
+    CustomerFormComponent,
+    ProductComponent,
+    ProductFormComponent
   ],
   imports: [
     BrowserModule,

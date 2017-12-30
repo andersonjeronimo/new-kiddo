@@ -1,0 +1,49 @@
+<div class="jumbotron">
+  <h1>Cadastro de clientes</h1>
+  <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group" [ngClass]="verificaCSS('kidName') ? 'has-success' : 'has-danger'">
+      <div class="input-group">
+        <span class="input-group-addon">
+          <i class="fas fa-child fa-2x"></i>
+        </span>
+        <input type="text" class="form-control" formControlName="kidName" [ngClass]="verificaCSS('kidName') ? 'form-control-success' : 'form-control-danger'"
+          placeholder="Nome da criança">
+      </div>
+    </div>
+
+    <div class="form-group" [ngClass]="verificaCSS('parentName') ? 'has-success' : 'has-danger'">
+      <div class="input-group">
+        <span class="input-group-addon">
+          <i class="fas fa-male fa-2x"></i>
+        </span>
+        <input type="text" class="form-control" formControlName="parentName" [ngClass]="verificaCSS('parentName') ? 'form-control-success' : 'form-control-danger'"
+          placeholder="Nome pai/mãe ou responsável">
+      </div>
+    </div>
+
+    <div class="form-group" [ngClass]="verificaCSS('contact') ? 'has-success' : 'has-danger'">
+      <div class="input-group">
+        <span class="input-group-addon">
+          <i class="fab fa-whatsapp-square fa-2x"></i>
+        </span>
+        <input type="text" class="form-control" formControlName="contact" [ngClass]="verificaCSS('contact') ? 'form-control-success' : 'form-control-danger'"
+          placeholder="Contato (email, nº whatsapp, etc...)">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <button class="btn btn-success btn-block" type="submit">
+            <i class="far fa-save fa-2x"></i>
+            Cadastrar
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </form>
+
+</div>
+

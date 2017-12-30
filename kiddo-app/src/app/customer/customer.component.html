@@ -1,0 +1,66 @@
+<div class="jumbotron">
+  <h1>Clientes</h1>
+    <form>
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="fa fa-search fa-2x" aria-hidden="true"></i>
+          </span>
+          <input type="text" class="form-control" id="inputSearch" required [(ngModel)]="filter" [ngModelOptions]="{standalone: true}"
+            aria-describedby="titleHelp" placeholder="Buscar clientes">
+        </div>
+      </div>
+    </form>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Criança</th>
+          <th>Responsável</th>
+          <th>Contato</th>
+          <th></th>
+        </tr>
+      </thead>
+      <preloader *ngIf="loading"></preloader>
+      <tbody>
+        <tr *ngFor="let customer of filterCustomerList()">
+          <td>{{customer.kidName}}</td>
+          <td>{{customer.parentName}}</td>
+          <td>{{customer.contact}}</td>
+          <td>
+            <button [disabled]="loading" class="btn btn-primary">
+              <i class="fab fa-playstation"></i> Brincar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th>Criança</th>
+          <th>Responsável</th>
+          <th>Contato</th>
+          <th></th>
+        </tr>
+      </tfoot>
+    </table>
+
+    <div class="row justify-content-center">
+      <nav>
+        <ul class="pagination pagination-lg">
+          <li class="page-item">
+            <a class="page-link" (click)="previousPage()">
+              <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li class="page-item" [class.active]="i === (currentPage-1)" *ngFor="let item of numOfPages; let i = index" [attr.data-index]="i">
+            <a class="page-link">{{i + 1}}</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" (click)="nextPage()">
+              <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+</div>

@@ -1,19 +1,39 @@
-<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-primary">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarApp" aria-controls="navbarNav"
     aria-expanded="false" aria-label="Toggle navigation">
     <span>
       <i class="fa fa-bars" aria-hidden="true"></i>
     </span>
   </button>
-  <a class="navbar-brand text-muted">Kiddo Project</a>
+  <a class="navbar-brand">Kiddo Project</a>
   <div class="collapse navbar-collapse" id="navbarApp">
     <ul class="navbar-nav">
-      <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Início">
+      <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Playground">
         <a class="nav-link" [routerLink]="['/home']" [routerLinkActive]="['active']">
-          <i class="fa fa-home fa-3x" aria-hidden="true"></i>
+          <i class="fab fa-playstation fa-3x"></i>
         </a>
       </li>
       <!-- autenticado -->
+      <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Lista de clientes">
+        <a class="nav-link" [routerLink]="['/customer']" [routerLinkActive]="['active']">
+          <i class="fas fa-users fa-3x"></i>
+        </a>
+      </li>
+      <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Cadastro de clientes">
+        <a class="nav-link" [routerLink]="['/customer-form']" [routerLinkActive]="['active']">
+          <i class="fas fa-user-plus fa-3x"></i>
+        </a>
+      </li>
+      <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Lista de produtos">
+        <a class="nav-link" [routerLink]="['/product']" [routerLinkActive]="['active']">
+          <i class="fas fa-cubes fa-3x"></i>
+        </a>
+      </li>
+      <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Cadastro de produtos">
+        <a class="nav-link" [routerLink]="['/product-form']" [routerLinkActive]="['active']">
+          <i class="fas fa-cube fa-3x"></i>
+        </a>
+      </li>
       <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Sair">
         <a class="nav-link" [routerLink]="['/login']" [routerLinkActive]="['active']">
           <i class="fa fa-sign-out-alt fa-3x" aria-hidden="true"></i>
