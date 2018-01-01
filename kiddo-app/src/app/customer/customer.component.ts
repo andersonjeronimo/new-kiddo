@@ -1,7 +1,8 @@
-import { AlertService } from './../_services/alert.service';
-import { FirebaseService } from './../_services/firebase.service';
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+
+import { AlertService } from './../_services/alert.service';
+import { FirebaseService } from './../_services/firebase.service';
 
 @Component({
   selector: 'app-customer',

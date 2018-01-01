@@ -1,18 +1,17 @@
-import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { AlertService } from "./../_services/alert.service";
-import { FirebaseService } from "./../_services/firebase.service";
-import { Customer } from "./../_models/customer.model";
-import { error } from "util";
+import { AlertService } from './../_services/alert.service';
+import { FirebaseService } from './../_services/firebase.service';
+import { Customer } from './../_models/customer.model';
 
 @Component({
-  selector: "app-customer-form",
-  templateUrl: "./customer-form.component.html",
-  styleUrls: ["./customer-form.component.css"]
+  selector: 'app-customer-form',
+  templateUrl: './customer-form.component.html',
+  styleUrls: ['./customer-form.component.css']
 })
 export class CustomerFormComponent implements OnInit {
-  private reference = "customer";
+  private reference = 'customer';
   private databaseChildRef: any = null;
 
   customerForm: FormGroup;
@@ -54,17 +53,9 @@ export class CustomerFormComponent implements OnInit {
     if (this.customerForm.valid) {
       this.createCustomer();
     } else {
-      this.alertService.error("Verificar preenchimento dos campos.");
+      this.alertService.error('Verificar preenchimento dos campos.');
     }
   }
-
-  /*
-  public kidName: string,
-      public birthDate: Date,
-      public parentName: string,
-      public contact: string,
-      public playing: boolean
-  */
 
   private createCustomer() {
     let customer: Customer = new Customer(
@@ -75,20 +66,12 @@ export class CustomerFormComponent implements OnInit {
       false
     );
 
-    this.databaseChildRef.push(customer).then(value => {
+    this.databaseChildRef.push(customer).then(() => {
       this.alertService.success(`${customer.kidName} cadastrado com sucesso!`, true);
       this.clearForm();
     })
     .catch(error => {
-      this.alertService.error(error);
+      this.alertService.error(`Erro: ${error}`);
     });
   }
-
-  /* private delayedPush = function(customer) {
-    return new Promise(function(resolve, reject) {
-      setTimeout(() => {
-        this.databaseChildRef.push(customer).then(resolve, reject);
-      }, 1);
-    });
-  }; */
 }
