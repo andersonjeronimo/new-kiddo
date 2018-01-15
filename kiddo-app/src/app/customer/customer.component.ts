@@ -1,18 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { Component, OnInit } from "@angular/core";
+import { DomSanitizer } from "@angular/platform-browser";
 
-import { AlertService } from './../_services/alert.service';
-import { FirebaseService } from './../_services/firebase.service';
+import { AlertService } from "./../_services/alert.service";
+import { FirebaseService } from "./../_services/firebase.service";
 
 @Component({
-  selector: 'app-customer',
-  templateUrl: './customer.component.html',
-  styleUrls: ['./customer.component.css']
+  selector: "app-customer",
+  templateUrl: "./customer.component.html",
+  styleUrls: ["./customer.component.css"]
 })
 export class CustomerComponent implements OnInit {
-
   customerList: any[] = [];
-  private reference = 'customer';
+  private reference = "customer";
   private customerDatabaseRef: any = null;
   loading = false;
   filter: string;
@@ -23,14 +22,14 @@ export class CustomerComponent implements OnInit {
   pageSize = 5; // hardcoded...modificar
   private firstItemKey: string;
   private lastItemKey: string;
-  childKey = 'kidName'; // orderByChild('childKey') hardcoded...modificar
+  childKey = "kidName"; // orderByChild('childKey') hardcoded...modificar
   // END_OF paginação
 
   constructor(
     private firebase: FirebaseService,
     private sanitizer: DomSanitizer,
     private alertService: AlertService
-  ) { }
+  ) {}
 
   private getFirebaseReferences(reference: string) {
     this.customerDatabaseRef = this.firebase.getDatabaseRef(reference);
@@ -48,7 +47,7 @@ export class CustomerComponent implements OnInit {
     let pages: number;
     let hasLastPage = false;
     this.numOfPages = [];
-    this.customerDatabaseRef.once('value').then(snapshot => {
+    this.customerDatabaseRef.once("value").then(snapshot => {
       numChildren = snapshot.numChildren();
       pages = numChildren / this.pageSize;
       hasLastPage = numChildren % this.pageSize === 0 ? false : true;
@@ -92,7 +91,7 @@ export class CustomerComponent implements OnInit {
       .orderByChild(this.childKey)
       .endAt(this.firstItemKey)
       .limitToLast(this.pageSize + 1)
-      .once('value')
+      .once("value")
       .then(snapshot => {
         this.customerList = [];
         snapshot.forEach(childSnapshot => {
@@ -113,7 +112,7 @@ export class CustomerComponent implements OnInit {
       .orderByChild(this.childKey)
       .startAt(this.lastItemKey)
       .limitToFirst(this.pageSize + 1)
-      .once('value')
+      .once("value")
       .then(snapshot => {
         this.customerList = [];
         snapshot.forEach(childSnapshot => {
@@ -133,7 +132,7 @@ export class CustomerComponent implements OnInit {
     this.customerDatabaseRef
       .orderByChild(this.childKey)
       .limitToFirst(this.pageSize)
-      .once('value')
+      .once("value")
       .then(snapshot => {
         this.customerList = [];
         snapshot.forEach(childSnapshot => {
@@ -150,7 +149,7 @@ export class CustomerComponent implements OnInit {
 
   listFiles() {
     this.loading = true;
-    this.customerDatabaseRef.once('value').then(snapshot => {
+    this.customerDatabaseRef.once("value").then(snapshot => {
       this.customerList = [];
       snapshot.forEach(childSnapshot => {
         this.customerList.push(childSnapshot.val());
@@ -164,16 +163,17 @@ export class CustomerComponent implements OnInit {
     if (
       this.customerList.length === 0 ||
       this.filter === undefined ||
-      this.filter.trim() === ''
+      this.filter.trim() === ""
     ) {
       return this.customerList;
     }
     return this.customerList.filter(customer => {
-      if (customer.kidName.toLowerCase().indexOf(this.filter.toLowerCase()) >= 0) {
+      if (
+        customer.kidName.toLowerCase().indexOf(this.filter.toLowerCase()) >= 0
+      ) {
         return true;
       }
       return false;
     });
   }
-
 }
